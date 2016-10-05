@@ -1,0 +1,12 @@
+<ul class="teachers">
+{% for teacher in teachers %}
+  <li>
+    <h2>{{ teacher.name }}</h2>
+    <ul>
+      {% for course in teachers['courses'] %}
+      <li>{{ course }}</li>
+      {% endfor %}
+    </ul>
+  </li>
+{% endfor %}
+</ul>

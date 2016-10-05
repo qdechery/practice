@@ -1,0 +1,161 @@
+<!doctype html>
+<html class="no-js" lang="en" ng-app="contentApp">
+	<head>
+		<title>PHP & Json</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.css" />
+		<link rel="stylesheet" href="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css" />
+		<script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+		<script src="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.js"></script>
+		<script>
+		  var contentApp = angular.module('contentApp', []);
+		  contentApp.controller('ContentCtrl', ['$scope', '$http', function (scope, http){
+		    http.get('quarterly_call_october_altered.json').success(function(data) {
+				scope.contents = data;
+				// scope.gridOptions = { data: contents };
+			  	
+			  	// console.log(data);
+
+			    // for(var i = 0; i < scope.contents.length; i++) {
+			    // 	var obj = scope.contents[i];
+			    // 	var rowCount = $("table tr").parent();
+			    	// $("table tr").append(obj.FIELD1);
+			    	// if (obj.FIELD1 == "Andrew Morris") {
+
+			    	// 	$(".first").css("background-color","red");
+
+			    		// console.log(obj);
+			    		// console.log($("#myTable").rows[0]);
+			    		// $("table tr:nth-child("+row+")").append(obj.FIELD2);
+			    		// $("table tr:nth-child("+obj+")").append("w/e");
+			    		// var index = _.findIndex(obj, searchValue); 
+
+
+				 //    var table = document.getElementById("myTable");
+					// for (var i = 0, row; row = table.rows[i]; i++) {
+					// 	console.log(row[i]);
+					//    //iterate through rows
+					//    //rows would be accessed using the "row" variable assigned in the for loop
+					//    for (var j = 0, col; col = row.cells[j]; j++) {
+					//      //iterate through columns
+					//      //columns would be accessed using the "col" variable assigned in the for loop
+					//    }  
+					// }	
+					
+		  	// 	$('#myTable tr').each(function(){
+					// $(this).find('.field1').each(function(){
+    	// 				// if($(this).html == "") {
+    	// 					 console.log($(this));
+    					// }
+    						// .parent().prev().find('.field1').html.append($this);
+					// });
+				// });
+		    });
+		  }]);
+		</script>
+	</head>
+
+	<body ng-controller="ContentCtrl">
+		<!-- NG-GRID -->
+		<!-- <div class="gridStyle" ng-grid="gridOptions"></div> -->
+
+		<div class="row">
+		  <div class="small-12 columns">
+		    <h1><center><b>Call Tracking</b></center></h1>
+		    <div class="row collapse">
+		      <div class="small-2 columns">
+		        <span class="prefix">Search Specialist:</span>
+		      </div>
+		      <div class="small-2 columns">
+		        <input id="specSearch" ng-model="query.FIELD1" type="text"/>
+		      </div>
+		      
+			 <div class="small-2 columns">
+		 		<p>Results: <span id="results"></span></p>
+		 		<span id="resultType"></span>
+		      </div>
+
+		      <div class="small-2 columns right">
+		        <input id="webidSearch" ng-model="query.FIELD2" type="text"/>
+		      </div>
+		      <div class="small-2 columns right">
+		        <span class="prefix">Search WebID:</span>
+		      </div>
+		      <div class="small-8 columns"></div>
+		    </div>
+		    <table id="myTable" width="100%">
+		      <thead>
+		      	<tr>
+		      		<!-- <td>ID#</td> -->
+		      		<td>Specialist Name</td>
+		      		<td>WebID</td>
+		      		<td>LastSEOOwnerChange</td>
+		      		<td>LastSpoketoDate</td>
+		      		<!-- <td>Days Since Last Call</td> -->
+		      		<td>Calls</td>
+		      		<td>Emails</td>
+		      		<td>Messages</td>
+		      	</tr>
+		      </thead>
+		      <tbody>
+		      	<tr ng-repeat="content in contents | filter:query">
+		          <!-- <td ng-class="num"></td> -->
+		          <td ng-class="field1">{{content.FIELD1}}</td>
+		          <td ng-class="field2">{{content.FIELD2}}</td>
+		          <td ng-class="field3">{{content.FIELD3}}</td>
+		          <td ng-class="field4">{{content.FIELD4}}</td>
+		          <!-- <td ng-class="daysSince">{{}}</td> -->
+		          <td ng-class="field5">{{content.FIELD6}}</td>
+		          <td ng-class="field6">{{content.FIELD7}}</td>
+		          <td ng-class="field7">{{content.FIELD8}}</td>
+		        </tr>
+		      </tbody>
+          </table>
+	  </div>
+	</div>
+		<style>
+			table thead tr {
+				color: white;
+				background-color: lightblue;
+				font-weight: bold;
+			} 
+			table tbody tr:nth-child(odd) {
+			  background-color: #F0F8FF;
+			}
+			table tbody tr:nth-child(even) {
+			  background-color: #ffffff;
+			}
+			p {
+				font-size: 10px;
+				margin: 10px 20px;
+			}
+			#results {
+				font-weight: bold;
+			}
+			.gridStyle {
+			    border: 1px solid rgb(212,212,212);
+			    width: 400px; 
+			    height: 300px
+			}
+		</style>
+	</body>
+<script>
+		function results() {
+			var rowCount = $('table#myTable tbody tr:last').index()+1;
+			$('#results').html("");
+			$('#results').append(rowCount);
+		}
+
+		$("#specSearch").keyup(function() {
+			results();
+			$('#results').append(" Specialists");
+		});
+		$("#webidSearch").keyup(function() {
+			results();
+			$('#results').append(" WebIDs");
+		})
+	
+</script>
+</html>

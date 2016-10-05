@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="countryApp">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Manager Tools</title>
+		<meta-name="description" content="SEO Management Tools">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+		<!-- <script src="app.js"></script> -->
+		<!-- // <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script> -->
+
+		<script>
+			var countryApp = angular.module('countryApp', []);
+			countryApp.controller('CountryCtrl', function ($scope, $http){
+			  $http.get('countries.json').success(function(data) {
+			    $scope.countries = data;
+			  });
+			  $scope.sortField = 'population';
+			  $scope.reverse = true;
+			});
+		</script>
+	</head>
+	<body ng-controller="CountryCtrl">
+	  Search:<input ng-model="query" type="text"/>
+	  <table>
+	    <tr>
+	      <th><a href="" ng-click="sortField ='name'; reverse = !reverse">Country</a></th>
+	      <th><a href="" ng-click="sortField = 'population'; reverse = !reverse">Population</a></th>
+	    </tr>
+	    <tr ng-repeat="country in countries | filter:query | orderBy:sortField:reverse">
+	      <td>{{country.name}}</td>
+	      <td>{{country.population}}</td>
+	    </tr>
+	  </table>
+	</body>
+</html>

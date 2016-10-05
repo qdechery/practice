@@ -1,0 +1,24 @@
+{
+  "name": "y",
+  "authors": [
+    "qdechery <qdechery@gmail.com>"
+  ],
+  "description": "Template learned from sneeit.com youtube vids",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-utils": "~3.0.0",
+    "angular": "~1.4.7",
+    "angular-ui-mask": "~1.4.7"
+  }
+}

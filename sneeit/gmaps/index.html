@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Angular UI - GMaps</title>
+		<style>
+			.map {
+				height: 400px;
+				/*left: -50px;*/
+				width: auto;
+				margin: auto 2%;
+				margin-top: 1%;
+				/*border: 5px dotted black;*/
+			}
+			.container {
+				padding-top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div ng-controller='MainCtrl' class='container'>
+			<h1 style="text-align:center">Dubai - Burj Khalifa</h1>
+			<div class='map' ui-map='MyMap' ui-options='mapOptions' ui-event="{'map-click': 'addMarker($event, $params)', 'map-zoom_changed': 'setZoomMessage(myMap.getZoom())' }"></div>
+		</div>
+
+		<script src="./bower_components/angular/angular.js"></script>
+		<script src="./bower_components/angular-ui-utils/ui-utils.js"></script>
+		<script type="text/javascript" src="./bower_components/angular-ui-event/dist/event.js"></script>
+		<script src="./bower_components/angular-ui-map/ui-map.js"></script>
+		<script src="app.js"></script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady"></script>
+
+	</body>
+</html>

@@ -1,0 +1,25 @@
+body {
+	background-color: lightblue;
+}
+tr:first-child {
+	font-weight: bold;
+}
+td:first-child {
+	text-decoration: underline;
+}
+td {
+	padding: 3px;
+	/*margin: 10px;*/
+	text-align: center;
+}
+td:nth-child(6) {
+
+	padding-left: 50px;
+}
+td:nth-child(7) {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#filter-count {
+	font-size: 12px;
+}

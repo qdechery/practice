@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="directoryApp">
+	<head>
+		<title>AngularJS for Everyone</title>
+		<meta name="description" content="https://www.youtube.com/watch?v=21sFeFlvzks&list=PLLnpHn493BHF6utwkwpo7RN-GPg1sZhvK&index=2" />
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-animate.js"></script>
+		<script src="directory.js"></script>
+		<style>
+			.over-thirty {
+				background: red;
+				color: white;
+			}
+			.under-thirty {
+				background: blue;
+				color: white;
+			}
+			.hidden {
+				display: none;
+			}
+		</style>
+	</head>
+	<body ng-controller="directoryController as dirList">
+		<input type="text" ng-model="search" placeholder="Search...">
+		<ul ng-class="{'hidden': !dirList.toggle}">
+			<li ng-repeat="item in dirList.list | filter:search" ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'">
+				{{item.name}} - {{item.age}}
+			</li>
+		</ul>
+		<button ng-if="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
+		<button ng-if="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+		<form ng-submit="dirList.addPerson()">
+			<input type="text" placeholder="Name" ng-model="dirList.name">
+			<input type="number" placeholder="Age" ng-model="dirList.age">
+			<input type="submit" value="SUBMIT">
+		</form>
+	</body>
+</html>
