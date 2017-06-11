@@ -1,0 +1,17 @@
+{
+  "name": "web_worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "web_worker.js",
+  "scripts": {
+    "start": "budo web_worker.js --live",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "budo": "^9.2.1",
+    "watchify": "^3.7.0",
+    "webworker": "^0.8.4"
+  }
+}

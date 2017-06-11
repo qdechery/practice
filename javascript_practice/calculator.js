@@ -13,7 +13,7 @@ function halfNumber(x){
 function percentOf(x,y){
 	var xPercent = x/100,
 		result = xPercent*y;
-	console.log(xPercent+" is",y+"%","of",result+".");
+	console.log(x+" is",y+"%","of",result+".");
 
 }
 

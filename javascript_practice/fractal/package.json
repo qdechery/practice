@@ -1,0 +1,17 @@
+{
+  "name": "fractal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sketch.js",
+  "scripts": {
+    "start": "budo index.html --live",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "budo": "^9.2.1",
+    "p5": "^0.5.4",
+    "watchify": "^3.7.0"
+  }
+}

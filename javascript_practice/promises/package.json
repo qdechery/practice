@@ -1,0 +1,19 @@
+{
+  "name": "promises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo index.js --live",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "budo": "^9.2.1",
+    "fs": "0.0.1-security",
+    "watchify": "^3.7.0",
+    "webpack": "^1.13.2",
+    "xhr": "^2.2.2"
+  }
+}
